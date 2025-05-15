@@ -1,8 +1,6 @@
 package ua.karazin.moviescontentitemsquery;
 
 import lombok.RequiredArgsConstructor;
-import org.axonframework.messaging.responsetypes.ResponseTypes;
-import org.axonframework.queryhandling.QueryGateway;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,12 +18,12 @@ public class MovieNameController {
     private final MovieNameQueryService movieNameQueryService;
 
     @GetMapping
-    public CompletableFuture<List<MovieName>> findAll() {
+    public CompletableFuture<List<Movie>> findAll() {
         return movieNameQueryService.findAll();
     }
 
     @GetMapping("/{id}")
-    public CompletableFuture<MovieName> findById(@PathVariable UUID id) {
+    public CompletableFuture<Movie> findById(@PathVariable UUID id) {
         return movieNameQueryService.findById(id);
     }
 }

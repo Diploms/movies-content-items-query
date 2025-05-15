@@ -11,7 +11,6 @@ public class SerializationConfiguration {
     @Bean
     public ObjectMapper objectMapper() {
         return JacksonSerializer.builder()
-                .defaultTyping()
                 .build().getObjectMapper();
     }
 }

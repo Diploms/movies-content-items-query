@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.axonframework.messaging.responsetypes.ResponseTypes;
 import org.axonframework.queryhandling.QueryGateway;
 import org.springframework.stereotype.Service;
-import ua.karazin.moviescontentitemsquery.MovieName;
+import ua.karazin.moviescontentitemsquery.Movie;
 
 import java.util.List;
 import java.util.UUID;
@@ -16,18 +16,18 @@ public class MovieNameQueryService {
     private final MovieNameQuery movieNameQuery;
     private final QueryGateway queryGateway;
 
-    public CompletableFuture<List<MovieName>> findAll() {
+    public CompletableFuture<List<Movie>> findAll() {
         return queryGateway.query(
                 "findAll",
                 null,
-                ResponseTypes.multipleInstancesOf(MovieName.class)
+                ResponseTypes.multipleInstancesOf(Movie.class)
         );
     }
 
-    public CompletableFuture<MovieName> findById(UUID id) {
+    public CompletableFuture<Movie> findById(UUID id) {
         return queryGateway.query(
                 "findById",
                 id,
-                ResponseTypes.instanceOf(MovieName.class));
+                ResponseTypes.instanceOf(Movie.class));
     }
 }
